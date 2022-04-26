@@ -49,15 +49,15 @@ exports.login = async (req, res) => {
 exports.register = async (req, res) => {
 
   try {
-    if (!req.body.email)
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(req.body.email))
       return res.json({
         success: false,
-        message: "Email is required"
+        message: "Invalide email address"
       })
-    if (!req.body.password)
+    if (!req.body.password || req.body.password.length < 8)
       return res.json({
         success: false,
-        message: "Password is required"
+        message: "Password must be of minimum 8 in length"
       })
     const email = req.body.email.toLowerCase();
     const firstName = req.body.firstName;
