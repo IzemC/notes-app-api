@@ -61,7 +61,7 @@ exports.register = async (req, res) => {
       })
     const email = req.body.email.toLowerCase();
     const firstName = req.body.firstName;
-    const lastName = req.body.firstName;
+    const lastName = req.body.lastName;
     const password = req.body.password;
 
     const user = await prisma.users.findUnique({
